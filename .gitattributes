@@ -1,0 +1,6 @@
+# These files run on the device; keep LF even on Windows checkouts.
+* text=auto eol=lf
+# Built binary and installer: never touch.
+llama-completion binary
+*.muxapp binary
+*.gguf binary

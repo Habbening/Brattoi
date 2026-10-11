@@ -1,0 +1,62 @@
+[
+  {
+    "file": "granite-4.0-350m-Q4_0.gguf",
+    "name": "Granite 4.0 350M",
+    "rating": "Best help",
+    "note": "Recommended. Sticks to the muOS docs for help answers and chats sensibly. About 7 words a second, 9 s to wake up.",
+    "license": "Apache 2.0",
+    "url": "https://huggingface.co/ibm-granite/granite-4.0-350m-GGUF/resolve/main/granite-4.0-350m-Q4_0.gguf",
+    "size": 228470176,
+    "sha256": "a9db4c0ab23bb3c676f5fea5521d7a9301c577834a1cabf3430ab826fb68195a"
+  },
+  {
+    "file": "Qwen2.5-0.5B-Instruct-Q4_0.gguf",
+    "name": "Qwen2.5 0.5B",
+    "rating": "Best chat",
+    "note": "Holds the best conversation, but can make things up in help answers. Slowest: about 5 words a second, 14 s to wake up.",
+    "license": "Apache 2.0",
+    "url": "https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-Q4_0.gguf",
+    "size": 352972352,
+    "sha256": "c8cd5f37dd1235fb010c45316d4ff8af875e1a4e0ff368b4bf6cacb9053d4919"
+  },
+  {
+    "file": "LFM2-350M-Q4_0.gguf",
+    "name": "LFM2 350M",
+    "rating": "Some sense",
+    "note": "Friendly but gets muddled in chats. About 7 words a second.",
+    "license": "LFM Open License v1.0",
+    "url": "https://huggingface.co/LiquidAI/LFM2-350M-GGUF/resolve/main/LFM2-350M-Q4_0.gguf",
+    "size": 219306944,
+    "sha256": "8e3ebc1c608dc8683adf8c3b3e6a40e2f4eab22aa33b908bff2ac03a1c16d796"
+  },
+  {
+    "file": "SmolLM2-360M-Instruct-Q4_0.gguf",
+    "name": "SmolLM2 360M",
+    "rating": "Some sense",
+    "note": "Fair help answers, repeats itself in chats. About 7 words a second.",
+    "license": "Apache 2.0",
+    "url": "https://huggingface.co/bartowski/SmolLM2-360M-Instruct-GGUF/resolve/main/SmolLM2-360M-Instruct-Q4_0.gguf",
+    "size": 229733280,
+    "sha256": "c3608933eb6e5763b87f769bda40c204dc158333668c7af214644fe39da58627"
+  },
+  {
+    "file": "gemma-3-270m-it-Q4_0.gguf",
+    "name": "Gemma 3 270M",
+    "rating": "Not accurate",
+    "note": "Fast but cannot hold a conversation. About 10 words a second.",
+    "license": "Gemma Terms of Use",
+    "url": "https://huggingface.co/unsloth/gemma-3-270m-it-GGUF/resolve/main/gemma-3-270m-it-Q4_0.gguf",
+    "size": 241574944,
+    "sha256": "e479ea2962bdcdc7e6321b91148b9ac2f516f649e0921412561d4936aadef158"
+  },
+  {
+    "file": "SmolLM2-135M-Instruct-Q4_0.gguf",
+    "name": "SmolLM2 135M",
+    "rating": "Not accurate",
+    "note": "Fastest and smallest, mostly nonsense. About 17 words a second.",
+    "license": "Apache 2.0",
+    "url": "https://huggingface.co/bartowski/SmolLM2-135M-Instruct-GGUF/resolve/main/SmolLM2-135M-Instruct-Q4_0.gguf",
+    "size": 91893088,
+    "sha256": "bcc3af2849ad6095af57e9b5cd43775256efdc66e306acb529172f92d0c04b03"
+  }
+]
