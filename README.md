@@ -1,5 +1,7 @@
 # Brattoi
 
+![Brattoi](assets/brattoi-logo.gif)
+
 Tiny AI potato for muOS. A small language model running on the handheld itself, inside Mustard
 Terminal. No cloud, no account.
 
