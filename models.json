@@ -58,5 +58,55 @@
     "url": "https://huggingface.co/bartowski/SmolLM2-135M-Instruct-GGUF/resolve/main/SmolLM2-135M-Instruct-Q4_0.gguf",
     "size": 91893088,
     "sha256": "bcc3af2849ad6095af57e9b5cd43775256efdc66e306acb529172f92d0c04b03"
+  },
+  {
+    "file": "LFM2.5-350M-Q4_0.gguf",
+    "name": "LFM2.5 350M",
+    "rating": "New, try it",
+    "note": "Newer LFM2, same size. New in v0.14, not rated yet: tell us how it does.",
+    "license": "LFM Open License v1.0",
+    "url": "https://huggingface.co/LiquidAI/LFM2.5-350M-GGUF/resolve/main/LFM2.5-350M-Q4_0.gguf",
+    "size": 219309792,
+    "sha256": "85e32858daafad55b7bcd6b97a1343ee0661188e8036f9862d14d6b563142f50"
+  },
+  {
+    "file": "granite-4.0-h-350m-Q4_0.gguf",
+    "name": "Granite 4.0 H 350M",
+    "rating": "New, try it",
+    "note": "Hybrid version of Granite 4.0 350M. New in v0.14, not rated yet: tell us how it does.",
+    "license": "Apache 2.0",
+    "url": "https://huggingface.co/ibm-granite/granite-4.0-h-350m-GGUF/resolve/main/granite-4.0-h-350m-Q4_0.gguf",
+    "size": 216073120,
+    "sha256": "7adb3d5765ad12b83b1c08a90746d8925af718545b4a36287e8dac8f83b72ab6"
+  },
+  {
+    "file": "Falcon-H1-0.5B-Instruct-Q4_0.gguf",
+    "name": "Falcon-H1 0.5B",
+    "rating": "New, try it",
+    "note": "Hybrid model from TII. New in v0.14, not rated yet: tell us how it does.",
+    "license": "Falcon LLM License",
+    "url": "https://huggingface.co/tiiuae/Falcon-H1-0.5B-Instruct-GGUF/resolve/main/Falcon-H1-0.5B-Instruct-Q4_0.gguf",
+    "size": 304466208,
+    "sha256": "05bf28a1fdb3ffe9d111e88303631eb38dc4bb8392f66d015fccfa3fba3f937e"
+  },
+  {
+    "file": "LFM2-700M-Q4_0.gguf",
+    "name": "LFM2 700M",
+    "rating": "New, try it",
+    "note": "Twice the size of LFM2 350M, slower. New in v0.14, not rated yet: tell us how it does.",
+    "license": "LFM Open License v1.0",
+    "url": "https://huggingface.co/LiquidAI/LFM2-700M-GGUF/resolve/main/LFM2-700M-Q4_0.gguf",
+    "size": 446321600,
+    "sha256": "bf9c70678aff2a6ee2152b6fef4b2993892eae6449d056cf77cc1e34072424b3"
+  },
+  {
+    "file": "Qwen3.5-0.8B-Q4_0.gguf",
+    "name": "Qwen3.5 0.8B",
+    "rating": "New, try it",
+    "note": "Newest small Qwen, the biggest here, slowest. New in v0.14, not rated yet: tell us how it does.",
+    "license": "Apache 2.0",
+    "url": "https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF/resolve/main/Qwen3.5-0.8B-Q4_0.gguf",
+    "size": 507154688,
+    "sha256": "444406ddd926550c724ec18d5120a9d40ded44908a063b0e66e9a7e5464c652c"
   }
 ]

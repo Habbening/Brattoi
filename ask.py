@@ -52,6 +52,40 @@ HELP_SYSTEM = (
 )
 
 END_MARK = "[end of text]"
+# Ask models that can think out loud first not to: it would take minutes here. Others ignore it.
+NO_THINKING = ("-rea", "off")
+
+
+class NoThink:
+    """Stream wrapper that leaves out a <think>...</think> block and the blank lines after it.
+
+    Qwen3.5 still prints an empty one with thinking off.
+    """
+
+    OPEN, CLOSE = "<think>", "</think>"
+
+    def __init__(self, out):
+        self.out = out
+        self.held = ""
+        self.inside = self.after = False
+
+    def write(self, text):
+        for ch in text:
+            self.held += ch
+            if self.inside:
+                if self.held.endswith(self.CLOSE):
+                    self.held, self.inside, self.after = "", False, True
+            elif self.held == self.OPEN:
+                self.held, self.inside = "", True
+            elif self.after and ch.isspace():
+                self.held = ""
+            elif not self.OPEN.startswith(self.held):
+                self.after = False
+                self.out.write(self.held)
+                self.held = ""
+
+    def flush(self):
+        self.out.flush()
 
 
 def tokens(text):
@@ -95,17 +129,21 @@ def search(docs, question, top=2):
     return scored[:top]
 
 
-def generate(system, user, temp=0.3, max_tokens=120, out=None):
+def generate(system, user, temp=0.3, max_tokens=120, out=None, on_proc=None):
     """Run one chat turn with the model's own chat template.
 
     Streams the reply to `out` as it is generated when given, and returns the full reply.
+    `on_proc` is called with the llama.cpp process once it starts, so a caller can stop it early.
     """
     proc = subprocess.Popen(
         [LLAMA, "-m", MODEL, "-t", "4", "-n", str(max_tokens), "--temp", str(temp),
          "-cnv", "-st", "--no-display-prompt", "-co", "off", "--simple-io", "--no-warmup",
-         "-sys", system, "-p", user],
+         *NO_THINKING, "-sys", system, "-p", user],
         stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True, bufsize=0,
     )
+    if on_proc:
+        on_proc(proc)
+    out = NoThink(out) if out else None
 
     reply, held = "", ""
     while True:
@@ -135,7 +173,8 @@ class Chat:
     def __init__(self, system, temp=0.8, max_tokens=200):
         self.proc = subprocess.Popen(
             [LLAMA, "-m", MODEL, "-t", "4", "-c", "4096", "-n", str(max_tokens), "--temp", str(temp),
-             "-cnv", "--no-display-prompt", "-co", "off", "--simple-io", "--no-warmup", "-sys", system],
+             "-cnv", "--no-display-prompt", "-co", "off", "--simple-io", "--no-warmup", *NO_THINKING,
+             "-sys", system],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True, bufsize=0,
         )
         self.alive = self._read(startup=True) is not None
@@ -143,6 +182,7 @@ class Chat:
     def _read(self, out=None, startup=False):
         """Read until the ready prompt, streaming everything before it. None if the process ended."""
         text, pending = "", ""
+        out = NoThink(out) if out else None
         while True:
             ch = self.proc.stdout.read(1)
             if not ch:
@@ -179,13 +219,13 @@ class Chat:
                 self.proc.kill()
 
 
-def answer(question, chunks, out=None):
+def answer(question, chunks, out=None, on_proc=None):
     notes = "\n".join(f"{i}. {c['text']}" for i, c in enumerate(chunks, 1))
     prompt = (
         f"Notes from the muOS documentation:\n{notes}\n\n"
         f"Question: {question}\nAnswer using only these notes."
     )
-    return generate(HELP_SYSTEM, prompt, temp=0.2, max_tokens=150, out=out)
+    return generate(HELP_SYSTEM, prompt, temp=0.2, max_tokens=150, out=out, on_proc=on_proc)
 
 
 def main():

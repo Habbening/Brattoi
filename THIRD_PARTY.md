@@ -69,8 +69,9 @@ Not bundled. Brattoi downloads them from Hugging Face on request. Each has its o
 
 | Model | Licence |
 |---|---|
-| Granite 4.0 350M | Apache 2.0 |
-| Qwen2.5 0.5B | Apache 2.0 |
+| Granite 4.0 350M, Granite 4.0 H 350M | Apache 2.0 |
+| Qwen2.5 0.5B, Qwen3.5 0.8B | Apache 2.0 |
 | SmolLM2 360M, 135M | Apache 2.0 |
-| LFM2 350M | LFM Open License v1.0 |
+| LFM2 350M, LFM2 700M, LFM2.5 350M | LFM Open License v1.0 |
+| Falcon-H1 0.5B | Falcon LLM License |
 | Gemma 3 270M | Gemma Terms of Use |

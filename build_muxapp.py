@@ -22,6 +22,8 @@ FILES = [
     ("art.py", ".brattoi/art.py", 0o644),
     ("ask.py", ".brattoi/ask.py", 0o644),
     ("chat.py", ".brattoi/chat.py", 0o644),
+    ("gui.py", ".brattoi/gui.py", 0o644),
+    ("sdl.py", ".brattoi/sdl.py", 0o644),
     ("models.py", ".brattoi/models.py", 0o644),
     ("models.json", ".brattoi/models.json", 0o644),
     ("pack/docs.jsonl", ".brattoi/docs.jsonl", 0o644),

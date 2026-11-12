@@ -2,8 +2,8 @@
 
 ![Brattoi](assets/brattoi-logo.gif)
 
-Tiny AI potato for muOS. A small language model running on the handheld itself, inside Mustard
-Terminal. No cloud, no account.
+Tiny AI potato for muOS. A small language model running on the handheld itself, on its own
+screens. No cloud, no account.
 
 - **Ask muOS:** ready-made help questions, answered from a bundled copy of the muOS docs and forum
   FAQ **as of October 2026**. Sources shown. muOS moves fast, so check <https://muos.dev> for
@@ -45,6 +45,14 @@ time.
 | SmolLM2 360M | 230 MB | Some sense |
 | Gemma 3 270M | 242 MB | Not accurate |
 | SmolLM2 135M | 92 MB | Not accurate |
+| LFM2.5 350M | 219 MB | New in v0.14, not rated yet |
+| Granite 4.0 H 350M | 216 MB | New in v0.14, not rated yet |
+| Falcon-H1 0.5B | 304 MB | New in v0.14, not rated yet |
+| LFM2 700M | 446 MB | New in v0.14, not rated yet |
+| Qwen3.5 0.8B | 507 MB | New in v0.14, not rated yet |
+
+The five new ones load and answer on the Pixel 2. How good they are is not known yet. Try them and
+say how they do.
 
 Get **Granite and Qwen** and pick **Auto**: Granite answers muOS questions, Qwen does the chats.
 
@@ -59,17 +67,27 @@ every new chat starts with a wake-up: Granite about 9 seconds, Qwen about 14.
 
 | Button | Does |
 |---|---|
-| Up / Down | Move |
+| Up / Down | Move, scroll a chat |
 | A | Select |
-| B | Back |
-| Select | Show on-screen keyboard (again: move it, hide it) |
-| D-pad + A | Type a key |
-| X or Start | Send |
-| Send empty | End chat, go back |
-| L2 / R2 | Scroll the text |
+| B | Back, end chat |
+| A or X (in a chat) | Write a message |
 | Menu | Quit |
 
+Keyboard:
+
+| Button | Does |
+|---|---|
+| D-pad + A | Type a key |
+| B | Delete |
+| Y | Space |
+| X | Shift |
+| L1 / R1 | Symbols |
+| Start | Send |
+
 The **Controls** page in the main menu shows this too.
+
+If the screens fail to start, Brattoi opens in Mustard Terminal instead, as it did up to v0.12.
+The reason is in `/tmp/brattoi-launch.log`.
 
 ## Build
 
@@ -108,9 +126,11 @@ Then set `DOCS_DATE` in `chat.py` to the month of the rebuild.
 
 | File | What |
 |---|---|
-| `app/Brattoi/mux_launch.sh` | muOS launcher, starts `chat.py` in Mustard Terminal |
-| `chat.py` | Menus, input, chat screens |
-| `art.py` | Sixel logo and animation |
+| `app/Brattoi/mux_launch.sh` | muOS launcher, starts `gui.py`, falls back to `chat.py` in Mustard Terminal |
+| `gui.py` | The screens: menus, chats, keyboard, model manager |
+| `sdl.py` | Calls the muOS SDL2 and SDL2_ttf libraries |
+| `chat.py` | Menu texts, model choice, and the terminal version |
+| `art.py` | Logo pixel art and animation |
 | `ask.py` | Docs lookup, runs llama.cpp |
 | `models.py`, `models.json` | Model list, download, delete |
 | `build_docs.py` | Builds `pack/docs.jsonl` |
